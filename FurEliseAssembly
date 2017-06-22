@@ -1,0 +1,222 @@
+;Musica reproduzida por Diana Macena Cardoso dos Santos
+;Bacharelado em Ciência da Computação
+
+COD SEGMENT
+
+ASSUME CS:COD, DS:COD, ES:COD, SS:COD
+
+ORG 100h
+
+MAIN PROC NEAR
+CALL E_2
+CALL D_S_2
+CALL E_2
+CALL D_S_2
+CALL E_2
+CALL B_1
+CALL D_2
+CALL C_2
+CALL A_1
+CALL A_0
+CALL E_0
+CALL A_0
+CALL C_1
+CALL E_1
+CALL A_1
+;PS TEM UMAS DAS NOTAS QUE A FREQUENCIA EU NAO ACHEI, POR ISSO 1 OITAVA ACIMA (DEVE SER O A_0)
+CALL FIM
+
+	E_2:
+		MOV AL, 182		;preparando o auto-falante
+		OUT 43h, AL		;preparando a nota
+		MOV AX, 1809	;frequencia da nota
+		
+		OUT 42h, AL		;manda byte menos significativo
+		MOV AL, AH
+		OUT 42h, AL		;manda byte mais significativo
+		IN AL, 61h		;verifica qual o valor que está na porta
+		
+		OR AL, 00000011b	;"seta" os dois bits menos significativos
+		OUT 61h, AL 	;atualiza o valor na porta 61h... reproduz
+		MOV BX,5h		;determina a duraçao do som	
+		
+		CALL DURACAO
+		RET
+		
+	
+	D_S_2:
+		MOV AL, 182		;preparando o auto-falante
+		OUT 43h, AL		;preparando a nota
+		MOV AX, 1917	;frequencia da nota
+		
+		OUT 42h, AL		;manda byte menos significativo
+		MOV AL, AH
+		OUT 42h, AL		;manda byte mais significativo
+		IN AL, 61h		;verifica qual o valor que está na porta
+		
+		OR AL, 00000011b	;"seta" os dois bits menos significativos
+		OUT 61h, AL 	;atualiza o valor na porta 61h... reproduz
+		MOV BX,5h		;determina a duraçao do som
+		
+		CALL DURACAO
+		RET
+		
+	B_1:
+		MOV AL, 182		;preparando o auto-falante
+		OUT 43h, AL		;preparando a nota
+		MOV AX, 2415	;frequencia da nota
+		
+		OUT 42h, AL		;manda byte menos significativo
+		MOV AL, AH
+		OUT 42h, AL		;manda byte mais significativo
+		IN AL, 61h		;verifica qual o valor que está na porta
+		
+		OR AL, 00000011b	;"seta" os dois bits menos significativos
+		OUT 61h, AL 	;atualiza o valor na porta 61h... reproduz
+		MOV BX,5h		;determina a duraçao do som	
+		
+		CALL DURACAO
+		RET
+		
+	D_2:
+		MOV AL, 182		;preparando o auto-falante
+		OUT 43h, AL		;preparando a nota
+		MOV AX, 2031	;frequencia da nota
+		
+		OUT 42h, AL		;manda byte menos significativo
+		MOV AL, AH
+		OUT 42h, AL		;manda byte mais significativo
+		IN AL, 61h		;verifica qual o valor que está na porta
+		
+		OR AL, 00000011b	;"seta" os dois bits menos significativos
+		OUT 61h, AL 	;atualiza o valor na porta 61h... reproduz
+		MOV BX,5h		;determina a duraçao do som		
+		
+		CALL DURACAO
+		RET
+		
+	C_2:
+		MOV AL, 182		;preparando o auto-falante
+		OUT 43h, AL		;preparando a nota
+		MOV AX, 2280	;frequencia da nota
+		
+		OUT 42h, AL		;manda byte menos significativo
+		MOV AL, AH
+		OUT 42h, AL		;manda byte mais significativo
+		IN AL, 61h		;verifica qual o valor que está na porta
+		
+		OR AL, 00000011b	;"seta" os dois bits menos significativos
+		OUT 61h, AL 	;atualiza o valor na porta 61h... reproduz
+		MOV BX,5h		;determina a duraçao do som	
+		
+		CALL DURACAO
+		RET
+
+	A_1:
+		MOV AL, 182		;preparando o auto-falante
+		OUT 43h, AL		;preparando a nota
+		MOV AX, 2711	;frequencia da nota
+		
+		OUT 42h, AL		;manda byte menos significativo
+		MOV AL, AH
+		OUT 42h, AL		;manda byte mais significativo
+		IN AL, 61h		;verifica qual o valor que está na porta
+		
+		OR AL, 00000011b	;"seta" os dois bits menos significativos
+		OUT 61h, AL 	;atualiza o valor na porta 61h... reproduz
+		MOV BX,5h		;determina a duraçao do som	
+		
+		CALL DURACAO
+		RET 
+		
+	A_0:
+		MOV AL, 182		;preparando o auto-falante
+		OUT 43h, AL		;preparando a nota
+		MOV AX, 5423	;frequencia da nota
+		
+		OUT 42h, AL		;manda byte menos significativo
+		MOV AL, AH
+		OUT 42h, AL		;manda byte mais significativo
+		IN AL, 61h		;verifica qual o valor que está na porta
+		
+		OR AL, 00000011b	;"seta" os dois bits menos significativos
+		OUT 61h, AL 	;atualiza o valor na porta 61h... reproduz
+		MOV BX,5h		;determina a duraçao do som	
+		
+		CALL DURACAO
+		RET	
+		
+	E_0:
+		MOV AL, 182		;preparando o auto-falante
+		OUT 43h, AL		;preparando a nota
+		MOV AX, 7239	;frequencia da nota
+		
+		OUT 42h, AL		;manda byte menos significativo
+		MOV AL, AH
+		OUT 42h, AL		;manda byte mais significativo
+		IN AL, 61h		;verifica qual o valor que está na porta
+		
+		OR AL, 00000011b	;"seta" os dois bits menos significativos
+		OUT 61h, AL 	;atualiza o valor na porta 61h... reproduz
+		MOV BX,6h		;determina a duraçao do som	
+		
+		CALL DURACAO
+		RET	
+
+	C_1:
+		MOV AL, 182		;preparando o auto-falante
+		OUT 43h, AL		;preparando a nota
+		MOV AX, 4560	;frequencia da nota
+		
+		OUT 42h, AL		;manda byte menos significativo
+		MOV AL, AH
+		OUT 42h, AL		;manda byte mais significativo
+		IN AL, 61h		;verifica qual o valor que está na porta
+		
+		OR AL, 00000011b	;"seta" os dois bits menos significativos
+		OUT 61h, AL 	;atualiza o valor na porta 61h... reproduz
+		MOV BX,5h		;determina a duraçao do som	
+		
+		CALL DURACAO
+		RET		
+
+	E_1:
+		MOV AL, 182		;preparando o auto-falante
+		OUT 43h, AL		;preparando a nota
+		MOV AX, 3619	;frequencia da nota
+		
+		OUT 42h, AL		;manda byte menos significativo
+		MOV AL, AH
+		OUT 42h, AL		;manda byte mais significativo
+		IN AL, 61h		;verifica qual o valor que está na porta
+		
+		OR AL, 00000011b	;"seta" os dois bits menos significativos
+		OUT 61h, AL 	;atualiza o valor na porta 61h... reproduz
+		MOV BX,5h		;determina a duraçao do som	
+		
+		CALL DURACAO
+		RET	
+		
+	DURACAO:	
+		DURA:
+			MOV CX, 0FFFFh
+			
+		
+		DURAC:
+			DEC CX
+			JNE DURAC
+			DEC BX
+			JNE DURA
+			
+			IN AL, 61h		;verifica qual o valor esta na porta 61h
+			AND AL, 11111100b	;"zera" os dois bits menos significativos
+			OUT 61h, AL		;atualiza valor na porta 61h, fim da reproduçao
+			
+		RET	
+		
+	FIM:	
+		INT 20H		;retorna para o S.O
+
+MAIN ENDP ;finaliza procedure
+COD ENDS ;finaliza segmento
+END MAIN ;finaliza programa
